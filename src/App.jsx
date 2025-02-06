@@ -1,29 +1,56 @@
-import React from 'react';
-import { findLongestWord, countOccurrences, calculateTotalScore, Tab, addEntry } from './Ecmascript/exercices';
-import { searchByID } from './Ecmascript/functions';
-
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import Hello from './Components/Hello'
+import From from './Components/Form'
+import'bootstrap/dist/css/bootstrap.min.css';
+import { Counter, ListManager, ColorBox, NotesManager, TodoList } from "./Components/exercices";
+import Event from "./Components/Event";
+import Events from "./Components/Events";
 function App() {
-    // Tester les fonctions
-    const longestWord = findLongestWord(["apple", "banana", "strawberry", "blueberry"]);
-    const occurrences = countOccurrences([["apple", "banana"], ["apple", "orange"], ["banana", "orange", "apple"]]);
-    const totalScore = calculateTotalScore([45, 30, 60, 80, 40, 50]);
+  const [count, setCount] = useState(0)
 
-    // Ajouter des entrées et tester la recherche par ID
-    addEntry("Alice", 25);
-    addEntry("Bob", 30);
-    addEntry("Charlie", 22);
-    const foundUser = searchByID(Tab, 2);
+  return (
+    <>
+      {/* <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+       <Hello></Hello>
+      <From labelle="FirstName" namee="FirstName"></From>
+      <From labelle="LastName" namee="LastName"></From> 
+      <div>
+      <h1>Workshop React - Exercices</h1>
+      <Counter />
+      <ListManager />
+      <ColorBox />
+      <NotesManager />
+      <TodoList />
+    </div>*/
+      }
+    <div className="App">
+      <Events />
+    </div>
 
-    return (
-        <div>
-            <h1>Test des Fonctions</h1>
-            <p><b>Mot le plus long :</b> {longestWord.mot} ({longestWord.longueur} lettres)</p>
-            <p><b>Occurrences des mots :</b> {JSON.stringify(occurrences)}</p>
-            <p><b>Total des notes après bonus :</b> {totalScore}</p>
-            <p><b>Utilisateurs ajoutés :</b> {JSON.stringify(Tab)}</p>
-            <p><b>Recherche par ID 2 :</b> {foundUser ? JSON.stringify(foundUser) : "Non trouvé"}</p>
-        </div>
-    );
+    </>
+  )
 }
 
-export default App;
+export default App
